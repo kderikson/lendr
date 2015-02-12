@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, :authorized_user, only: [:edit, :update, :destroy]
 
   # GET /items
   # GET /items.json
@@ -10,11 +10,12 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
+    @item = Item.find(params[:id])
   end
 
   # GET /items/new
   def new
-    @item = Item.new
+    @item = current_user.items.build
   end
 
   # GET /items/1/edit
@@ -24,7 +25,7 @@ class ItemsController < ApplicationController
   # POST /items
   # POST /items.json
   def create
-    @item = Item.new(item_params)
+    @item = current_user.items.build(item_params)
 
     respond_to do |format|
       if @item.save
@@ -70,5 +71,10 @@ class ItemsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
       params.require(:item).permit(:title, :description, :note, :borrowdate, :returndate, :returned)
+    end
+
+    def authorized_user
+      @item = current_user.items.find_by(params[:id])
+      redirect_to items_path, notice: "Not authorized to edit this link" if @item.nil?
     end
 end
