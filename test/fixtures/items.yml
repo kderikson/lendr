@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  note: MyText
+  borrowdate: 2015-02-12
+  returndate: 2015-02-12
+  returned: false
+
+two:
+  title: MyString
+  description: MyText
+  note: MyText
+  borrowdate: 2015-02-12
+  returndate: 2015-02-12
+  returned: false

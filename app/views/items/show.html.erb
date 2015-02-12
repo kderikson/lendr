@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @item.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @item.description %>
+</p>
+
+<p>
+  <strong>Note:</strong>
+  <%= @item.note %>
+</p>
+
+<p>
+  <strong>Borrowdate:</strong>
+  <%= @item.borrowdate %>
+</p>
+
+<p>
+  <strong>Returndate:</strong>
+  <%= @item.returndate %>
+</p>
+
+<p>
+  <strong>Returned:</strong>
+  <%= @item.returned %>
+</p>
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
